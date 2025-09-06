@@ -1,27 +1,36 @@
 {
   "root": true,
-  "env": {
-    "browser": true
-  },
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+    },
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
   },
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
     "plugin:jsx-a11y/recommended",
     "prettier"
   ],
+  "plugins": ["react", "jsx-a11y"],
   "settings": {
     "react": {
       "version": "detect"
     }
   },
-  "overrides": [
-    {
-      "files": ["*.js", "*.jsx"]
-    }
-  ]
+  "ignorePatterns": ["dist/"],
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": 2
+  }
 }
