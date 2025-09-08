@@ -1,6 +1,6 @@
-import { initDatabase } from '/workspaces/Hello_CS618/backend/db/init.js'
+import { initDatabase } from '/workspaces/Hello_CS618/backend/src/db/init.js'
 initDatabase()
-import { Post } from '/workspaces/Hello_CS618/backend/db/models/posts.js'
+import { Post } from '/workspaces/Hello_CS618/backend/src/db/models/posts.js'
 
 const newPost = new Post({
   title: 'Hello Mongoose',
@@ -12,7 +12,7 @@ const newPost = new Post({
 const Posted = await newPost.save()
 
 await Post.findByIdAndUpdate(Posted._id, {
-  $set: { title: 'Hello again, Mongoose!' },
+  $set: { title: 'Hello again, Mongoose!' }
 })
 
 const savedPosts = await Post.find()
