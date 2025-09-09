@@ -23,4 +23,18 @@ export async function listPostsByAuthor(author, options){
 export async function listPostsByTag(tags, options){
     return await listPosts({ tags }, options)
 }
-//listAllPosts().then(posts => console.log(posts))
+export async function getPostById(postId){
+    return await Post.findById(postId)
+}
+export async function updatePost(postId, {title, author, content, tags}){
+    return await Post.findOneAndUpdate(
+        { _id: postId },
+        {$set: {title, author, content, tags}},
+        {new: true}
+    )
+}
+export async function deletePost(postId){
+    return await Post.deleteOne({_id: postId})
+}
+
+
