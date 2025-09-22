@@ -1,12 +1,14 @@
 import { initDatabase } from '/workspaces/Hello_CS618/backend/src/db/init.js'
-initDatabase()
 import { Post } from '/workspaces/Hello_CS618/backend/src/db/models/posts.js'
+import dotenv from 'dotenv'
+dotenv.config()
+initDatabase()
 
 const newPost = new Post({
-  title: 'Hello Mongoose',
-  content: 'This is the content of my first post.',
-  author: 'Jill Bagwoh',
-  tags: ['Mongoose', 'MongoDB'],
+  title: 'Some greetings',
+  content: 'How are you doing?',
+  author: 'Iliasu',
+  tags: ['Other'],
 })
 
 const Posted = await newPost.save()

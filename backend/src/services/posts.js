@@ -4,7 +4,7 @@ initDatabase()
 //Imports the model of a post from the models/posts.js file
 
 //Creates a new post and saves it to the database
-export async function createPost({title, author, content, tags}) {
+export async function createPost({title, content, author, tags}) {
     const post = new Post({title, author, content, tags})
     return await post.save()
 }
