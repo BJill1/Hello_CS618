@@ -8,7 +8,7 @@ import { createPost,
     getPostById,
     updatePost,
     deletePost
- } from "/workspaces/Hello_CS618/backend/src/services/posts.js"
+ } from '../services/posts.js'
 import { Post } from '../db/models/posts'
 
 const samplePosts = [

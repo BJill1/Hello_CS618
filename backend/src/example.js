@@ -1,5 +1,5 @@
-import { initDatabase } from '/workspaces/Hello_CS618/backend/src/db/init.js'
-import { Post } from '/workspaces/Hello_CS618/backend/src/db/models/posts.js'
+import { initDatabase } from './db/init.js'
+import { Post } from './db/models/posts.js'
 import dotenv from 'dotenv'
 dotenv.config()
 initDatabase()

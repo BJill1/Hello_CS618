@@ -1,5 +1,5 @@
-import { Post } from "/workspaces/Hello_CS618/backend/src/db/models/posts.js"
-import { initDatabase } from '/workspaces/Hello_CS618/backend/src/db/init.js'
+import { Post } from '../db/models/posts.js'
+import { initDatabase } from '../db/init.js'
 initDatabase()
 //Imports the model of a post from the models/posts.js file
 
