@@ -1,6 +1,4 @@
 import { Post } from '../db/models/posts.js'
-import { initDatabase } from '../db/init.js'
-initDatabase()
 //Imports the model of a post from the models/posts.js file
 
 //Creates a new post and saves it to the database
