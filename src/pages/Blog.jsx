@@ -1,9 +1,10 @@
-import { PostList } from './components/PostList.jsx'
-import { CreatePost } from './components/CreatePost.jsx'
-import { PostFilter } from './components/PostFilter.jsx'
-import { PostSorting } from './components/PostSorting.jsx'
+import { PostList } from '../components/PostList.jsx'
+import { CreatePost } from '../components/CreatePost.jsx'
+import { PostFilter } from '../components/PostFilter.jsx'
+import { PostSorting } from '../components/PostSorting.jsx'
+import { Header } from '../components/Header.jsx'
 import { useQuery } from '@tanstack/react-query'
-import { getPosts } from './api/posts.js'
+import { getPosts } from '../api/posts.js'
 import { useState } from 'react'
 
 export function Blog() {
@@ -17,29 +18,28 @@ export function Blog() {
   const posts = postsQuery.data ?? []
   return (
     <div style={{ padding: 8 }}>
-    <h1> Welcome to my block!</h1>
+      <h1> Welcome to my block!</h1>
+      <Header />
+      <br />
       <CreatePost />
       <br />
       <hr />
       Filter by:
-      <PostFilter 
+      <PostFilter
         field='author'
-        value = {author} 
-        onChange = {(value) => setAuthor(value)}
-        />
+        value={author}
+        onChange={(value) => setAuthor(value)}
+      />
       <br />
-      <PostSorting 
+      <PostSorting
         fields={['createdAt', 'updatedAt']}
-        value = {sortBy}
-        onChange = {(value) => setSortBy(value)}
-        orderValue = {sortOrder}
-        onOrderChange = {(value) => setSortOrder(value)} 
-        />
+        value={sortBy}
+        onChange={(value) => setSortBy(value)}
+        orderValue={sortOrder}
+        onOrderChange={(value) => setSortOrder(value)}
+      />
       <hr />
       <PostList posts={posts} />
     </div>
   )
 }
-
-
-
