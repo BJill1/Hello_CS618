@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useNavigate, Link } from 'react-router-dom'
 import { login } from '../api/users.js'
 import { useAuth } from '../contexts/AuthContext.jsx'
-export function login() {
+export function Login() {
   const [, setToken] = useAuth()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
