@@ -10,7 +10,6 @@ export function Login() {
   const navigate = useNavigate()
   const loginMutation = useMutation({
     mutationFn: () => login({ username, password }),
-    onSuccess: login({ username, password }),
     onSuccess: (data) => {
       setToken(data.token)
       navigate('/')

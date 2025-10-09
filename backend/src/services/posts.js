@@ -1,4 +1,5 @@
 import { Post } from '../db/models/posts.js'
+import { User } from '../db/models/user.js'
 //Imports the model of a post from the models/posts.js file
 
 //Creates a new post and saves it to the database
@@ -15,8 +16,10 @@ async function listPosts(
 export async function listAllPosts(options){
     return await listPosts({}, options)
 }
-export async function listPostsByAuthor(author, options){
-    return await listPosts({author}, options)
+export async function listPostsByAuthor(authorUsername, options){
+    const user = await User.findOne({ username: authorUsername })
+    if (!user) return []
+    return await listPosts({author: user._id}, options)
 }
 export async function listPostsByTag(tags, options){
     return await listPosts({ tags }, options)
