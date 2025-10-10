@@ -7,7 +7,7 @@ export const getPosts = async (queryParams) => {
 }
 export const createPost = async ( token, post ) => {
   const res = await fetch(
-    `${import.meta.env.VITE_BACKEND_URL}/api/v1/posts`,
+    `${import.meta.env.VITE_BACKEND_URL}/posts`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json',
