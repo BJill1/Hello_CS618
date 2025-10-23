@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://didactic-giggle-5gg6p65p749vh77g4-5173.app.github.dev/sitemap.xml
