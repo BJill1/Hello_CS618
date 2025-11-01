@@ -1,3 +1,4 @@
 {
   "schema": "https://didactic-giggle-5gg6p65p749vh77g4-3000.app.github.dev/graphql",
   "documents": "src/api/graphql/**/*.{js,jsx}"
+}
