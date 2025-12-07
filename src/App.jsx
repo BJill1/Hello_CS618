@@ -1,27 +1,38 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Blog } from './pages/Blog.jsx'
+import { Signup } from './pages/Signup.jsx'
+import { Login } from './pages/Login.jsx'
 import { AuthContextProvider } from './contexts/AuthContext.jsx'
-import PropTypes from 'prop-types'
-import { HelmetProvider } from 'react-helmet-async'
-import { ApolloProvider } from '@apollo/client/react/index.js'
-import { ApolloClient, InMemoryCache } from '@apollo/client/core/index.js'
+import { io } from 'socket.io-client'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+const socket = io(import.meta.env.VITE_SOCKET_HOST)
 const queryClient = new QueryClient()
-const apolloClient = new ApolloClient({
-  uri: import.meta.env.VITE_GRAPHQL_URL,
-  cache: new InMemoryCache(),
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Blog />,
+  },
+  {
+    path: '/signup',
+    element: <Signup />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+])
+socket.on('connect', () => {
+  console.log('connected to socket.io as', socket.id)
 })
-
-export function App({ children }) {
+socket.on('connect_error', (err) => {
+  console.error('socket.io connect error:', err)
+})
+export function App() {
   return (
-    <HelmetProvider>
-      <ApolloProvider client={apolloClient}>
-        <QueryClientProvider client={queryClient}>
-          <AuthContextProvider>{children}</AuthContextProvider>
-        </QueryClientProvider>
-      </ApolloProvider>
-    </HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthContextProvider>
+        <RouterProvider router={router} />
+      </AuthContextProvider>
+    </QueryClientProvider>
   )
 }
-App.propTypes = {
-  children: PropTypes.element.isRequired,
-}
-
